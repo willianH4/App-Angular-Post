@@ -1,11 +1,17 @@
 <div>
-  <div class="row g-3">
-      <div class="col-auto">
+  <div class="my-3">
+    <p>{{ authorName }}</p>
+  </div>
+  <div class="d-flex justify-content-center">
+      <div class="mx-1">
       <label for="input" class="visually-hidden">Value</label>
       <input [(ngModel)]="value" type="text" class="form-control" id="inputPassword2" placeholder="Enter value">
       </div>
-      <div class="col-auto">
+      <div>
         <button (click)="onAddValue()" class="btn btn-primary mb-3">Add value</button>
       </div>
   </div>
+</div>
+<div>
+  <button class="btn btn-info" (click)="onChangeTextName()">Change name author</button>
 </div>
