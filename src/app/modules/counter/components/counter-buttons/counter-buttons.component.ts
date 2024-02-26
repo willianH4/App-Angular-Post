@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { decrement, increment, reset } from '../../state/counter.actions';
+import { CounterState } from '../../state/counter.state';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-counter-buttons',
   templateUrl: './counter-buttons.component.html',
   styleUrls: ['./counter-buttons.component.scss']
 })
-export class CounterButtonsComponent implements OnInit {
+export class CounterButtonsComponent implements OnInit, OnDestroy {
 
   valueCounter?: number;
+  counterSubcription?: Subscription;
 
   constructor(
-    private store: Store<{ counter: { counter: number } }>
+    private store: Store<{ counter: CounterState }>
   ) { }
 
   ngOnInit(): void {
-    this.store.select('counter').subscribe(data => {
+    this.counterSubcription = this.store.select('counter').subscribe(data => {
       this.valueCounter = data.counter;
     });
   }
@@ -31,6 +34,10 @@ export class CounterButtonsComponent implements OnInit {
 
   onReset() {
     this.store.dispatch(reset());
+  }
+
+  ngOnDestroy(): void {
+    if( this.counterSubcription ) this.counterSubcription.unsubscribe();
   }
 
 }
