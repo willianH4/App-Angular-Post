@@ -1,0 +1,11 @@
+<div>
+  <div class="row g-3">
+      <div class="col-auto">
+      <label for="input" class="visually-hidden">Value</label>
+      <input [(ngModel)]="value" type="text" class="form-control" id="inputPassword2" placeholder="Enter value">
+      </div>
+      <div class="col-auto">
+        <button (click)="onAddValue()" class="btn btn-primary mb-3">Add value</button>
+      </div>
+  </div>
+</div>
