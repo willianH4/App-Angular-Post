@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './modules/counter/state/counter.reducer';
 import { HomeComponent } from './home/pages/home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -19,9 +19,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
-    StoreModule.forRoot({
-      counter: counterReducer
-    }),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production, // Restrict extension to log-only mode
     }),

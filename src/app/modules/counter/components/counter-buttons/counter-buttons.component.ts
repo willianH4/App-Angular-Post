@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { decrement, increment, reset } from '../../state/counter.actions';
-import { CounterState } from '../../state/counter.state';
 import { Subscription } from 'rxjs';
+import { AppState } from '../../../../core/data/interfaces';
 
 @Component({
   selector: 'app-counter-buttons',
@@ -15,7 +15,7 @@ export class CounterButtonsComponent implements OnInit, OnDestroy {
   counterSubcription?: Subscription;
 
   constructor(
-    private store: Store<{ counter: CounterState }>
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {

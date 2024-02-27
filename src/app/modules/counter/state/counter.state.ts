@@ -1,8 +1,4 @@
-
-export interface CounterState {
-  counter: number;
-  author: string;
-}
+import { CounterState } from '../../../core/data/interfaces';
 
 export const initialState: CounterState = {
   counter: 0,
