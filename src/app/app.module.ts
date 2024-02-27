@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './modules/counter/state/counter.reducer';
+import { HomeComponent } from './home/pages/home/home.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,6 +21,9 @@ import { counterReducer } from './modules/counter/state/counter.reducer';
     LayoutModule,
     StoreModule.forRoot({
       counter: counterReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      logOnly: environment.production, // Restrict extension to log-only mode
     }),
   ],
   providers: [],
